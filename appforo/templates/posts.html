@@ -1,0 +1,43 @@
+{% extends "index.html" %}
+{% block title %} Posts {% endblock %}
+{% block css %} 
+	{% load crispy_forms_tags %}
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'css/posts.css' %}">
+{% endblock %}
+{% block cabecera %} {{ nomForo }} {% endblock %}
+{% block contenido %}
+    <div class="cab text-center">
+        <h4>{{ nomForo.descripcion }}</h4>
+    </div>
+    <div class="posts">
+        <ul>
+            <div class="entrada">
+                <li class="cuadro">
+                    Tema
+                    <span class="derecha ok">Fecha de publicación</span> 
+                </li>
+            </div>
+            {% for i in post %}
+            <div class="post">
+                <li>
+                	<div class="descripcion">
+	                    <a href="{% url 'respuestas' i.id %}">{{i}}</a>
+                        <span class="derecha">{{i.fechaPublicacion}}</span>
+                	</div>
+                </li>
+            </div>
+            {% endfor %}
+            
+        </ul>
+        {% if user.is_authenticated %}
+        <div class="crearPost">
+	        <a href="{% url 'crearPost' nomForo.id %}" class="btn btn-success boton">Crear nuevo post</a>
+	    </div>
+        {% else %}
+        <div class="crearPost text-center">
+            <a href="{% url 'login' %}"><h4>Necesitas loguearte para crear un post</h4></a>
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}

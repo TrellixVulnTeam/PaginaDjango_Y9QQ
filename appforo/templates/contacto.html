@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+{% block title %} Contacto {% endblock %}
+{% block css %}
+	{% load crispy_forms_tags %}
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'css/contacto.css' %}">
+{% endblock %}
+{% block cabecera %} Contacta con el administrador {% endblock %}
+{% block contenido %}
+
+	<div class="formulario">
+		<form action="" method="POST">
+			{% if forms.errors %}
+                <p>ERROR</p>
+            {% endif %}
+            {% csrf_token %}
+            <div class="contacto">
+            	{{ form|crispy }}
+            <div class="boton">
+            	<button type="submit" class="btn btn-success">Enviar</button>
+        	</div>
+            </div>
+		</form>
+	</div>
+{% endblock %}

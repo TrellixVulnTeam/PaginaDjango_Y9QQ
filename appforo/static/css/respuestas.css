@@ -1,0 +1,41 @@
+.respuestas{
+	margin-top:5%;
+	width:70%;
+	margin-left:15%;
+}
+.cajon{
+	background-color:#FFF6FC;
+	width:80%;
+	margin-left:10%;
+	min-height:20vh;
+}
+.presentacion{
+	padding:1%;
+	width:100%;
+	min-height: 5vh;
+	background-color:#ffffbf;
+}
+.fecha{
+	float:right;
+}
+.respuesta{
+	padding:1%;
+	height:100%;
+}
+ul{
+	list-style: none;
+}
+li{
+	margin-bottom: 1%;
+}
+.foto{
+	width:10%;
+	min-height:12vh;
+	height: :12vh;
+	float:left;
+}
+.crearRespuesta{
+	width:30%;
+	margin-left:37%;
+	margin-bottom:5%;
+}

@@ -1,0 +1,51 @@
+{% extends "index.html" %}
+{% block title %} Respuestas {% endblock %}
+{% block css %}
+	{% load staticfiles %}
+		<link rel="stylesheet" href="{% static 'css/respuestas.css' %}">
+{% endblock %}
+{% block cabecera %} {{ nomPost }} {% endblock %}
+{% block contenido %}
+	<div class="respuestas">
+		<ul>
+			{% load el_pagination_tags %}
+			{% paginate respuestas %}
+	        {% for i in respuestas %}
+		        <li>
+		        	<div class="foto">
+		        		{% for u in usuario %}
+		        			{% ifequal u.id i.usuario.id %}
+		        				{% if u.imagen %}
+		        					<img src="{{ u.imagen.url }}" class="img-thumbnail" alt="Usuarios imagen" width="100%" height="100%"></img>
+								{% else %}
+									<img src="/media/fotos/defecto.png" class="img-thumbnail" width="100%" height="100%"></img>
+		        				{% endif %}
+		        	</div>
+		        	<div class="cajon">
+		        		<div class="presentacion">
+		        			<a>
+								{{ u.usuario.username }}
+							{% endifequal %}
+						{% endfor %}
+		        			</a>
+		        			<span class="fecha">{{ i.fechaPublicacion }}</span>
+		        		</div>
+		        		<div class="respuesta">
+			            	{{ i.respuesta }}
+			            </div>
+		    		</div>
+		    	</li>
+	        {% endfor %}
+	        {% show_pages %}
+	    </ul>
+	    {% if user.is_authenticated %}
+	        <div class="crearRespuesta">
+		        <a href="{% url 'crearRespuesta' nomPost.id request.user.id %}" class="btn btn-success boton">¡Participa en la discusion y responde!</a>
+		    </div>
+        {% else %}
+	        <div class="crearRespuesta text-center">
+	            <a href="{% url 'login' %}"><h4>Logueate para escribir en este post</h4></a>
+	        </div>
+        {% endif %}
+	</div>
+{% endblock %}

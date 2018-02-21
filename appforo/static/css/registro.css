@@ -1,0 +1,33 @@
+body{
+	background-image: url('../images/pc.jpg');
+	text-decoration: none;
+	margin: 0;
+    padding: 0;
+    border: 0;
+    font-family:'Ubuntu';
+}
+.form-group{
+	margin-left:5%;
+	margin-top:2%;
+}
+.container{
+	margin-top:2%;
+	padding:1%;
+	background-color:#222;
+	color:white;
+	width:30%;
+	border-radius: 1%;
+}
+.campo{
+	width:100%;
+	color:#222;
+	background-color: white;
+}
+.btn{
+	color:#222;
+	margin-top:6%;
+}
+.cabecera{
+	margin-top:3%;
+	color:white;
+}

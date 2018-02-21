@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>{% block title %} Pagina principal {% endblock %}</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'css/index.css' %}">
+	<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+	{% block css %} {% endblock %}
+</head>
+<body>
+	<nav class="navbar navbar-inverse" id="menu">
+		<div class="container-fluid cabecera">
+		    <div class="navbar-header">
+		      <a class="navbar-brand"">Los de la Cueva</a>
+		    </div>
+		    <ul class="nav navbar-nav">
+		      <li class="active"><a href="{% url 'foros' %}">Foros</a></li>
+		    </ul>
+		    {% if user.is_authenticated %}
+				 <ul class="nav navbar-nav navbar-right">
+			      	<li><a><span class="glyphicon glyphicon-user"></span>{{ user.username }}</a></li>
+			      	<li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-remove"></span>Cerrar Sesion</a></li>
+			      	<li><span class="glyphicon glyphicon-menu-up desaparecer" onclick="menu()"></span></li>
+			    </ul>
+		    {% else %}
+			    <ul class="nav navbar-nav navbar-right">
+			      	<li><a href="{% url 'registro' %}" ><span class="glyphicon glyphicon-user"></span>Registrarse</a></li>
+			      	<li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span>Iniciar Sesión</a></li>
+			      	<li><span class="glyphicon glyphicon-menu-up desaparecer" onclick="menu()"></span></li>
+			    </ul>
+		    {% endif %}
+		 </div>
+	</nav>
+	<!--CONTENIDO-->
+	<div class="container titulo">
+		<p><h1 class="tituloCabecera">{% block cabecera %}Foros{% endblock %}<span class="glyphicon glyphicon-menu-down abajo collapse" onclick="aparece()" id="abajo"></h1></p>
+	</div>
+	{% block contenido %}
+	<div class="contenido">
+		<ul class="foros">
+			{% for i in object_list %}
+			<li>
+				<div class="foro bloque text-center">
+					<a href="{% url 'posts' i.id %}">{{ i }}</a>
+				</div>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+
+	{% endblock %}
+	
+	<footer class="panel-footer footer">
+			<div class="row">
+				<div class="col-md-6">
+					<ul class="list-unstyled text-center">
+						<span>Redes</span>
+						<li><a href="https://www.facebook.es">Facebook</a></li>
+						<li><a href="https://www.twitter.com">Twitter</a></li>
+					</ul>
+				</div>
+				<div class="col-md-6">
+					<ul class="list-unstyled text-center">
+						<span>© Los de la Cueva 2018</span>
+						<li><a href="{% url 'normas' %}">Normas del foro</a></li>
+						<li><a href="{% url 'contacto' %}">Contacto</a></li>
+					</ul>
+				</div>
+			</div>
+	</footer>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'css/crearPost.css' %}">
+		<title>Crear Post</title>
+		{% load crispy_forms_tags %}
+	</head>
+
+	<body>
+		<div class="crearpost">
+			{% block cuerpo %}
+			<form action="" method="post">
+				{{ form|crispy }}
+	            {% csrf_token %}
+	            <input type="hidden" name="foro" value="{{ foro.id }}">
+	            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-check"></span>Crear post</button>
+			</form>
+			{% endblock %}
+		</div>
+	</body>
+
+</html>

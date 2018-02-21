@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        {% load staticfiles %}
+        {% load crispy_forms_tags %}
+        <link rel="stylesheet" href="{% static 'css/registro.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    </head>
+    <body>
+        
+        <div class="container">
+            <header class="cabecera text-center">
+                <h3>Introduce tus credenciales</h3>
+            </header>
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% if forms.errors %}
+                    <p>ERROR</p>
+                {% endif %}
+                {{ form|crispy }}
+                {% csrf_token %}
+                <button type="submit" class="btn btn-block"><span class="glyphicon glyphicon-check"></span>Iniciar Sesion</button>
+            </form>
+            <p class="text-center">¿Aún no estás registrado? <a href="{% url 'registro' %}">Registrate!</a></p>
+            <a href="{% url 'foros' %}" class="volver">volver</a>
+        </div>
+    </body>
+</html>

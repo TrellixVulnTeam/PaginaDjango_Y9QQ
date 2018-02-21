@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+{% block title %} Foro sin Posts {% endblock %}
+{% block css %} 
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'css/noRespuestas.css' %}">
+{% endblock %}
+{% block cabecera %} {{ nomForo }} {% endblock %}
+{% block contenido %}
+	<div class="principal text-center">
+		<h1>¡No existen Posts para este Foro!</h1>
+		<h3>Se el primero en escribir en el<h3>
+	</div>
+	<div class="crearPost">
+		{% if user.is_authenticated %}
+	    	<a href="{% url 'crearPost' nomForo.id %}" class="btn btn-success boton">Empieza un Post</a>
+	    {% else %}
+	    	<a href="{% url 'login' %}" class="btn btn-success boton">Empieza un Post</a>
+	    {% endif %}
+	</div>
+{% endblock %}

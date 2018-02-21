@@ -1,0 +1,19 @@
+{% extends 'index.html'%}
+{% block title %} Normas del foro {% endblock %}
+{% block css %}
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'css/normas.css' %}">
+{% endblock %}
+{% block cabecera %} Normas {% endblock %}
+{% block contenido %}
+	<div class="normas">
+		<ol>
+			<li>No insultar</li>
+			<li>No acosar</li>
+			<li>Dejar claro el mensaje</li>
+			<li>No repetir posts</li>
+			<li>Evita escribir en mayusculas</li>
+		</ol><br>
+		<p>Todo el que no cumpla estas normas sera baneado de forma permanente del foro</p>
+	</div>
+{% endblock %}

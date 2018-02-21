@@ -1,0 +1,50 @@
+.posts{
+	width:70%;
+	margin-left:15%;
+	padding-bottom:1%;
+	padding-top:1%;
+}
+ul{
+	list-style:none;
+}
+.cab{
+	margin-top:2%;
+	margin-bottom:2%;
+}
+.post{
+	background-color:#FFF6FC;
+	border-bottom:1px solid #f4f0ec;
+	width:90%;
+	margin-left: 4%;
+	min-height: 7vh;
+	padding-left:2%;
+}
+.entrada{
+	width:90%;
+	margin-left:4%;
+}
+.cuadro{
+	background-color:#f4f0ec;
+	padding-top:1%;
+	padding-bottom:1%;
+	padding-left:2%;
+}
+.boton{
+	width:90%;
+	margin-left:4%;
+	margin-bottom:2%;
+}
+.crearPost{
+	width:30%;
+	margin-left:37%;
+}
+.descripcion{
+	padding-top:1.5%;
+	margin-right:1%;
+}
+.derecha{
+	float:right;
+}
+.ok{
+	margin-right: 1%;
+}
